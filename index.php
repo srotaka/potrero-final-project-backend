@@ -1,4 +1,5 @@
 <?php
+$configs = include('config.php');
 session_start();
 if(isset( $_SESSION["nombreCompleto"])){?>
 
@@ -55,10 +56,9 @@ if(isset( $_SESSION["nombreCompleto"])){?>
               <a class="dropdown-item" href="./pantalones.php">Pantalones</a>
               <a class="dropdown-item" href="./polleras.php">Polleras</a>
               <a class="dropdown-item" href="./remeras.php">Remeras</a>
-              <a class="dropdown-item" href="./shorts.php">Shorts</a>              
-            </div>
-            <div>
-              Hola <?php echo $_SESSION["nombreCompleto"]?>
+              <a class="dropdown-item" href="./shorts.php">Shorts</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./agregar-producto.php">Agregar nuevo producto</a>
             </div>
           </li>                   
           <li class="nav-item">
@@ -67,7 +67,7 @@ if(isset( $_SESSION["nombreCompleto"])){?>
           <li class="nav-item">
             <a class="nav-link" href="#contact-me">Escríbeme</a>
           </li>          
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" href="./cerrar-sesion.php">Cerrar Sesión</a>
           </li>
         </ul>
@@ -87,7 +87,7 @@ if(isset( $_SESSION["nombreCompleto"])){?>
     <hr class="cyan-line white-line">
     <p class="header-sub-text">
       <i class="bx bxs-quote-alt-left bx-tada bx-md"></i>
-      Construimos tu mejor versión
+      <?php echo($_SESSION["nombreCompleto"])?>, construimos tu mejor versión
       <i class="bx bxs-quote-alt-right bx-tada bx-md"></i>
     </p>
 
@@ -176,7 +176,7 @@ if(isset( $_SESSION["nombreCompleto"])){?>
                 <div class="contact-wrap w-100 p-md-5 p-4">
 
                   <div id="form-message-warning" class="mb-4"></div>
-                  <div id="form-message-success" class="mb-4">
+                  <div id="form-message-success" class="mb-4">1
                     Tu mensaje ha sido enviado. ¡Muchas gracias!
                   </div>
                   <form action="./forms/contact.php" method="post" role="form" id="contactForm" name="contactForm"
@@ -280,12 +280,10 @@ if(isset( $_SESSION["nombreCompleto"])){?>
     crossorigin="anonymous"></script>
   <script src="./assets/js/back-to-top.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="./assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Script para envío de emails con EmailJS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript"></script>
-  <script src="./assets/js/email-confirmation.js"></script>
+ 
+ 
   <script>AOS.init();</script>
 
 </body>

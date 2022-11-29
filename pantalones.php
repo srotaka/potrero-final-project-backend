@@ -1,3 +1,8 @@
+<?php
+$configs = include('config.php');
+session_start();
+if(isset( $_SESSION["nombreCompleto"])){?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,7 +35,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark-purple">
     <div class="container-fluid">
-      <a class="navbar-brand-light" href="./index.html">Haruki Store</a>
+      <a class="navbar-brand-light" href="./index.php">Haruki Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler-buttom">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,14 +53,19 @@
               <!-- <a class="dropdown-item" href="./pantalones.php">Pantalones</a> -->
               <a class="dropdown-item" href="./polleras.php">Polleras</a>
               <a class="dropdown-item" href="./remeras.php">Remeras</a>
-              <a class="dropdown-item" href="./shorts.php">Shorts</a>   
+              <a class="dropdown-item" href="./shorts.php">Shorts</a> 
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./agregar-producto.php">Agregar nuevo producto</a>  
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-white" href="./index.html#contacto">Contacto</a>
+            <a class="nav-link nav-link-white" href="./index.php#contacto">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-white" href="./index.html#contact-me">Escríbeme</a>
+            <a class="nav-link nav-link-white" href="./index.php#contact-me">Escríbeme</a>
+          </li>
+         <li class="nav-item">
+            <a class="nav-link nav-link-white" href="./cerrar-sesion.php">Cerrar Sesión</a>
           </li>
         </ul>
         <img src="./assets/images/calendar-01.png" alt="calendar" width="40" id="calendar-img">
@@ -135,7 +145,10 @@
             <a href="./shorts-Adidas.php">Adidas</a>
             <a href="./shorts-nike.php">Nike</a>
             <a href="./shorts-topper.php">Topper</a>
-          </div>          
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <a href="./agregar-producto.php" style="color:#fff">Agregar nuevo producto</a>          
         </div>
       </section>
       <!-- *** End Sidebar ***  -->
@@ -145,8 +158,8 @@
           <div class="col-md-8">
             <!-- Product from DB -->
             <?php
-            $conexion = mysqli_connect("127.0.0.1", "root", "root");
-            mysqli_select_db($conexion, "haruki_store");
+            $conexion = mysqli_connect($configs->host, $configs->username, $configs->pass);
+            mysqli_select_db($conexion, $configs->db);
             $consulta = "SELECT * FROM productos WHERE tipo_prenda = 'pantalon'";
             $datos = mysqli_query($conexion, $consulta);
 
@@ -168,7 +181,7 @@
                   <h6 class="text-success">Envío gratis</h6>
                   <div class="d-flex flex-column mt-4">
                     <a href="./editar-producto.php?id=<?php echo $reg['id'];?>" class="button btn btn-outline-primary btn-sm">Editar</a>
-                    <a href="./editar-producto.php?id=<?php echo $reg['id'];?>" class="button btn btn-danger btn-sm mt-1">Eliminar</a>
+                    <a href="./eliminar-producto.php?id=<?php echo $reg['id']; ?>" class="button btn btn-danger btn-sm mt-1">Eliminar</a>
                   </div>
                 </div>
               </div>
@@ -225,10 +238,8 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./assets/vendor/php-email-form/validate.js"></script>
   <script src="./assets/js/sidebar-dropdown.js"></script>
-  <!-- Script para envío de emails con EmailJS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript"></script>
-  <script src="./assets/js/email-confirmation.js"></script>
+ 
+ 
   <script>
     AOS.init();
   </script>
@@ -236,3 +247,9 @@
 </body>
 
 </html>
+
+<?php
+} else {
+  header("location:./login.html");
+}
+?>

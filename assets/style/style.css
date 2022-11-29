@@ -15,7 +15,6 @@ body {
 .bg-dark-purple {
   background-color: #7a3e90;
 }
-
 p {
   font-size: 1.1rem;
 }
@@ -147,7 +146,7 @@ section {
 /* ----------------- Header ----------------*/
 
 .header-home {
-  background-image: url("../images/background-01.png");
+  background-image: url("../images/background-01.webp");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -512,7 +511,7 @@ strong::before {
 }
 
 .form-img {
-  background-image: url("../images/conctac-me.png");
+  background-image: url("../images/conctac-me.webp");
   background-size: cover;
   background-position: right;
   border-radius: 10px;
@@ -527,7 +526,7 @@ strong::before {
 
 @media (max-width: 1200px) {
   .form-img {
-    background-image: url("../images/conctac-me.png");
+    background-image: url("../images/conctac-me.webp");
     background-size: cover;
     background-position: top right;
   }
@@ -568,10 +567,10 @@ strong::before {
 
 .error-message {
   display: none;
-  color: #ed3c0d;
+  color: #f7f2f1;
   text-align: center;
   padding: 15px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .loading:before {
@@ -642,11 +641,9 @@ strong::before {
 .colors span:nth-child(4) {
   background-color: purple;
 }
-/* .btn-danger {
-  height: 48px;
-  font-size: 18px;
-} */
-
+.precio::before{
+  content: "$";
+}
 /* ----------------- Footer ----------------*/
 
 #footer {
@@ -656,7 +653,7 @@ strong::before {
   padding-bottom: 1rem;
   color: #7a3e90;
   background-color: #fdfdfd;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #footer-purple {
@@ -666,7 +663,7 @@ strong::before {
   padding-bottom: 1rem;
   color: #fdfdfd;
   background-color: #7a3e90;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #footer-purple-fixed {
@@ -862,7 +859,7 @@ button:focus {
 }
 /* ---- LOGIN --- */
 .login-page {
-  background-image: url("../images/background-03.png");
+  background-image: url("../images/background-03.webp");
   background-size: cover;
   background-repeat: no-repeat;
   height: 120%;
@@ -883,11 +880,17 @@ button:focus {
   text-decoration: none;  
 }
 .logout-page{
-  background-image: url("../images/logout01.png");
+  background-image: url("../images/logout01.webp");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;  
+  height: 100vh;  
   background-position: center;  
+}
+.logout-link{
+  text-decoration: none;
+  font-size: 16px;
+  color: #7a3e90;
+  font-family: "Besley", serif;
 }
 /* ---- Sidebar ---- */
 

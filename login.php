@@ -1,11 +1,11 @@
 <?php
-    $conexion = mysqli_connect("127.0.0.1", "root", "root");
-    mysqli_select_db($conexion, "haruki_store");
+    $configs = include('config.php');
+    $conexion = mysqli_connect($configs->host, $configs->username, $configs->pass);
+    mysqli_select_db($conexion, $configs->db);
     $sesionEmail = $_POST['email'];
     $sesionPassword = $_POST['password'];
 
     session_start();
-    $_SESSION["email"] =$sesionEmail; 
     
     $consulta = "SELECT * FROM usuarios WHERE email='$sesionEmail' AND password='$sesionPassword'";
     $datos = mysqli_query($conexion, $consulta);

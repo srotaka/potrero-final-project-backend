@@ -4,6 +4,12 @@
   align-items: center;
   padding-top: 13%;
 }
+.register-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8%;
+}
 .form-container {
   background-color: #fff;
   font-size: 0;
@@ -19,6 +25,17 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+.form-container .left-register {
+  background-color: #2e323b;
+  width: 40%;
+  padding: 230px 50px;
+  display: inline-block;
+  vertical-align: top;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.form-container .left-register .title-login,
 .form-container .left-content .title-login {
   color: #fc589f;
   font-size: 44px;
@@ -27,7 +44,7 @@
   margin: 0 0 55px;
   font-family: "Rochester", cursive;
 }
-
+.form-container .left-register .sub-title,
 .form-container .left-content .sub-title {
   color: #fff;
   font-size: 36px;
@@ -132,7 +149,7 @@
 .form-container .right-content .signup-link a:hover {
   text-decoration: underline;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {  
   .form-container .left-content,
   .form-container .right-content {
     width: 100%;
@@ -143,5 +160,22 @@
   }
   .form-container .left-content .sub-title {
     font-size: 40px;
+  }
+  .form-container .right-content .form-title{
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .form-container .left-register{
+    width: 100%;
+    padding: 30px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 10px;
+  }
+  .form-container .left-register .title{
+    margin: 0 0 20px;
+  }
+  .form-container .left-register .sub-title{
+    font-size: 30px;
   }
 }
