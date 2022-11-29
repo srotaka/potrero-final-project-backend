@@ -145,10 +145,7 @@ if (isset($_SESSION["nombreCompleto"])) { ?>
             <a href="./shorts-nike.php">Nike</a>
             <a href="./shorts-topper.php">Topper</a>
           </div>
-
-          <div class="dropdown-divider"></div>
-          <a href="./agregar-producto.php" style="color:#fff">Agregar nuevo producto</a>
-
+          
           <div class="dropdown-divider"></div>
           <a href="./agregar-producto.php" style="color:#fff">Agregar nuevo producto</a>
         </div>

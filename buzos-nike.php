@@ -1,3 +1,7 @@
+<?php
+$configs = include('config.php');
+session_start();
+if (isset($_SESSION["nombreCompleto"])) { ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -243,3 +247,8 @@
 </body>
 
 </html>
+<?php
+} else {
+  header("location:./login.html");
+}
+?>

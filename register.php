@@ -1,4 +1,5 @@
 <?php
+    $configs = include('config.php');
     $conexion = mysqli_connect($configs->host, $configs->username, $configs->pass);
     mysqli_select_db($conexion, $configs->db);
 
