@@ -1,7 +1,11 @@
 <?php
+$configs = include('config.php');
+session_start();
+if(isset( $_SESSION["nombreCompleto"])){
+
 Ob_start();
-$conexion = mysqli_connect("127.0.0.1", "root", "root");
-mysqli_select_db($conexion, "haruki_store");
+$conexion = mysqli_connect($configs->host, $configs->username, $configs->pass);
+mysqli_select_db($conexion, $configs->db);
 
 $id = $_GET['id'];
 $consulta = "SELECT * FROM productos WHERE id=$id";
@@ -41,7 +45,7 @@ $datos = mysqli_fetch_array($respuesta);
 
   <nav class="navbar navbar-expand-lg navbar-dark-purple">
     <div class="container-fluid">
-      <a class="navbar-brand-light" href="./index.html">Haruki Store</a>
+      <a class="navbar-brand-light" href="./index.php">Haruki Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler-buttom">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -60,13 +64,18 @@ $datos = mysqli_fetch_array($respuesta);
               <a class="dropdown-item" href="./polleras.php">Polleras</a>
               <a class="dropdown-item" href="./remeras.php">Remeras</a>
               <a class="dropdown-item" href="./shorts.php">Shorts</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./agregar-producto.php">Agregar nuevo producto</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-white" href="./index.html#contacto">Contacto</a>
+            <a class="nav-link nav-link-white" href="./index.php#contacto">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-white" href="./index.html#contact-me">Escríbeme</a>
+            <a class="nav-link nav-link-white" href="./index.php#contact-me">Escríbeme</a>
+          </li>
+         <li class="nav-item">
+            <a class="nav-link nav-link-white" href="./cerrar-sesion.php">Cerrar Sesión</a>
           </li>
         </ul>
         <img src="./assets/images/calendar-01.png" alt="calendar" width="40" id="calendar-img">
@@ -159,14 +168,15 @@ $datos = mysqli_fetch_array($respuesta);
                       $marca = $_POST['marca'];
                       $talle = $_POST['talle'];
                       $precio = $_POST['precio'];
-                      
-                      if($_FILES['imagen'] == null | $_FILES['imagen'] == ''){
-                        $imagen = $datos['imagen']; 
+
+                      $consulta = "UPDATE productos SET tipo_prenda='$tipo_prenda', marca='$marca', talle='$talle', precio='$precio'";
+                      if($_FILES['imagen']['tmp_name'] == null || $_FILES['imagen']['tmp_name'] == ''){
+                      // si no viene, no hacer nada
                       } else {
                         $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+                        $consulta .= ", imagen='$imagen'";
                       }
-
-                      $consulta = "UPDATE productos SET tipo_prenda='$tipo_prenda', marca='$marca', talle='$talle', precio='$precio', imagen='$imagen' WHERE id ='$id'";
+                      $consulta .= " WHERE id ='$id'";
                       
                       mysqli_query($conexion, $consulta);
                       header('location: productos.php');
@@ -220,13 +230,17 @@ $datos = mysqli_fetch_array($respuesta);
   <script src="./assets/vendor/php-email-form/validate.js"></script>
   <script src="./assets/js/validate.js"></script>
 
-  <!-- Script para envío de emails con EmailJS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript"></script>
-  <script src="./assets/js/email-confirmation.js"></script>
+ 
+ 
   <script>
     AOS.init();
   </script>
 </body>
 
 </html>
+
+<?php
+} else {
+  header("location:./login.html");
+}
+?>

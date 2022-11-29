@@ -1,4 +1,11 @@
 <?php
+/**
+ * PHP Email Form
+ * Version: 1.0
+ * Website: https://bootstrapmade.com/php-email-form/
+ * Copyright: BootstrapMade.com
+ */
+
 class PHP_Email_Form {
 
   public $to = false;
@@ -14,12 +21,12 @@ class PHP_Email_Form {
   public $ajax = false;
 
   public $error_msg = array(
-    'invalid_to_email' => 'Tu Email se encuentra vacío o es invalido!',
-    'invalid_from_name' => 'Tu nombre se encuentra vacío!',
-    'invalid_from_email' => 'Tu Email se encuentra vacío o es invalido!',
-    'invalid_subject' => 'El asunto es demasiado corto o se encuentra vacío!',
-    'short' => 'es demasiado corto o se encuentra vacío!',
-    'ajax_error' => 'Sorry, the request should be an Ajax POST'
+    'invalid_to_email' => 'E-Mail field empty or invalid!',
+    'invalid_from_name' => 'Name field is empty!',
+    'invalid_from_email' => 'E-Mail field empty or invalid!',
+    'invalid_subject' => 'Subject empty or too small!',
+    'short' => 'Too small or empty!',
+    'ajax_error' => 'Sorry, the request must be an Ajax POST'
   );
 
   private $error = false;
